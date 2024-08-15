@@ -1,0 +1,47 @@
+# Xcode
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+*.DS_Store
+*.swp
+*.xcbkptlist
+
+# Pods
+Pods/*
+*.lock
+
+# Environment
+*.xcconfig
+*.mobileprovision
+sonar-reports/
+.scannerwork/
+
+# Fastlane
+fastlane/*.html
+fastlane/*.md
+fastlane/*.xml
+fastlane/*.log
+fastlane/certs
+fastlane/profiles
+fastlane/builds
+fastlane/buildLog
+fastlane/report.xml
+fastlane/README.md
+*.cer
+*.mobileprovision
+
+# Swiftlint
+swiftlint.html
