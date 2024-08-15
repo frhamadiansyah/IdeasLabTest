@@ -29,7 +29,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Third Questions"
+        self.title = "Question No. 3"
         // Do any additional setup after loading the view.
         view.addSubview(twoDButton)
         twoDButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
