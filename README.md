@@ -87,8 +87,7 @@ class SecondViewController: UIViewController {
 
 Now lets check on Leaks Instrument. If we navigate to the second view controller and dismiss it back to the first view controller, we can see the leaks intrument detects a memory leak. If we select the memory leak icon, it will give us the object that causing the leak.
 
-![Screenshot 2024-08-15 at 23 29 39](https://github.com/user-attachments/assets/cf768d0e-eb1b-4570-b966-deb8b4983d20)
-
+![leaks](/Users/fandrianrhamadiansyah/fandrianLocal/InterviewTest/IdeaslabTest/assets/leaks.png)
 
 As you can see, There's a leak on MainClass and SubClass class. From the timestamp and action we did, we know that leak happens when we dismiss second view controller.
 
