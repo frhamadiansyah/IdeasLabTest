@@ -14,7 +14,7 @@ class GraphView: UIView {
         super.draw(rect)
         backgroundColor = .white
         
-        let data = JSONUtils.readLocalFile(forName: "TW_Keypoints")
+        let data = KeypointsHelper.readLocalFile(forName: "TW_Keypoints")
         
         plot2DGraph(datapoint: data, to: layer)
         
@@ -56,24 +56,11 @@ class GraphView: UIView {
             let atanValue = atan(adjustedX)
             let hue = (atanValue + const) * hueRangeCoefficient
             
-            if i == 1 || i == data.count - 1 {
-                print("atan = \(atanValue) hue = \(hue), i = \(i), const = \(const)")
-            }
-            
             // use the hue value to generate color
             shapeLayer.strokeColor = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1).cgColor
             shapeLayer.fillColor = .none
             shapeLayer.lineCap = .round
             layer.addSublayer(shapeLayer)
-            
-                                let hueColor = UIBezierPath()
-            
-                                hueColor.addArc(withCenter: CGPoint(x: (CGFloat(i) / CGFloat(5)) + 10, y: (hue * 10) + 50), radius: 1, startAngle: 0, endAngle: 1, clockwise: true)
-                                let newshapeLayer = CAShapeLayer()
-                                newshapeLayer.path = hueColor.cgPath
-                                newshapeLayer.lineWidth = 3
-                                newshapeLayer.strokeColor = UIColor.black.cgColor
-                                layer.addSublayer(newshapeLayer)
         }
     }
 }

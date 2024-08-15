@@ -1,14 +1,14 @@
 //
-//  JSONUtils.swift
+//  KeypointsHelper.swift
 //  ThirdQuestionPlotGraph
 //
-//  Created by Fandrian Rhamadiansyah on 14/08/24.
+//  Created by Fandrian Rhamadiansyah on 15/08/24.
 //
 
 import Foundation
 import SceneKit
 
-struct JSONUtils {
+struct KeypointsHelper {
     static func readLocalFile(forName name: String) -> [Keypoints] {
         do {
             if let bundlePath = Bundle.main.path(forResource: name, ofType: "json"),

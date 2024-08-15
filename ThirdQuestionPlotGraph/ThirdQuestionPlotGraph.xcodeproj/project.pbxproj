@@ -22,7 +22,8 @@
 		757A99822C6C5E5100A4FDCE /* TW_Keypoints.json in Resources */ = {isa = PBXBuildFile; fileRef = 757A99802C6C5E5100A4FDCE /* TW_Keypoints.json */; };
 		757A99842C6C5E7A00A4FDCE /* Keypoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A99832C6C5E7A00A4FDCE /* Keypoints.swift */; };
 		757A99862C6CF8A300A4FDCE /* ThreeDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A99852C6CF8A300A4FDCE /* ThreeDViewController.swift */; };
-		757A99882C6D0F9300A4FDCE /* JSONUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A99872C6D0F9300A4FDCE /* JSONUtils.swift */; };
+		757A998C2C6DFA9300A4FDCE /* KeypointsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A998B2C6DFA9300A4FDCE /* KeypointsHelper.swift */; };
+		757A998E2C6DFAE700A4FDCE /* Extension+SCNGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A998D2C6DFAE700A4FDCE /* Extension+SCNGeometry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +63,8 @@
 		757A99802C6C5E5100A4FDCE /* TW_Keypoints.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TW_Keypoints.json; sourceTree = "<group>"; };
 		757A99832C6C5E7A00A4FDCE /* Keypoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keypoints.swift; sourceTree = "<group>"; };
 		757A99852C6CF8A300A4FDCE /* ThreeDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDViewController.swift; sourceTree = "<group>"; };
-		757A99872C6D0F9300A4FDCE /* JSONUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtils.swift; sourceTree = "<group>"; };
+		757A998B2C6DFA9300A4FDCE /* KeypointsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypointsHelper.swift; sourceTree = "<group>"; };
+		757A998D2C6DFAE700A4FDCE /* Extension+SCNGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+SCNGeometry.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		757A99462C6BB9FC00A4FDCE /* ThirdQuestionPlotGraph */ = {
 			isa = PBXGroup;
 			children = (
+				757A998A2C6DFA7500A4FDCE /* Utils */,
 				757A99472C6BB9FD00A4FDCE /* AppDelegate.swift */,
 				757A99492C6BB9FD00A4FDCE /* SceneDelegate.swift */,
 				757A997E2C6C5E1E00A4FDCE /* Misc */,
@@ -158,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				757A99832C6C5E7A00A4FDCE /* Keypoints.swift */,
-				757A99872C6D0F9300A4FDCE /* JSONUtils.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -170,6 +172,15 @@
 				757A99802C6C5E5100A4FDCE /* TW_Keypoints.json */,
 			);
 			path = Misc;
+			sourceTree = "<group>";
+		};
+		757A998A2C6DFA7500A4FDCE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				757A998B2C6DFA9300A4FDCE /* KeypointsHelper.swift */,
+				757A998D2C6DFAE700A4FDCE /* Extension+SCNGeometry.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,10 +319,11 @@
 				757A99842C6C5E7A00A4FDCE /* Keypoints.swift in Sources */,
 				757A997B2C6C5C8800A4FDCE /* GraphView.swift in Sources */,
 				757A99862C6CF8A300A4FDCE /* ThreeDViewController.swift in Sources */,
+				757A998C2C6DFA9300A4FDCE /* KeypointsHelper.swift in Sources */,
 				757A99792C6C5C6800A4FDCE /* TwoDViewController.swift in Sources */,
 				757A994C2C6BB9FD00A4FDCE /* ViewController.swift in Sources */,
-				757A99882C6D0F9300A4FDCE /* JSONUtils.swift in Sources */,
 				757A99482C6BB9FD00A4FDCE /* AppDelegate.swift in Sources */,
+				757A998E2C6DFAE700A4FDCE /* Extension+SCNGeometry.swift in Sources */,
 				757A994A2C6BB9FD00A4FDCE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

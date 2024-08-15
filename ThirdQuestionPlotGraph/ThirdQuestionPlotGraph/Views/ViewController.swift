@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         button.setTitle("3A. 2D Coordinate", for: .normal)
         button.addTarget(self, action: #selector(twoDButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.configuration = .filled()
         return button
     }()
     
@@ -22,13 +23,14 @@ class ViewController: UIViewController {
         button.setTitle("3B. 3D Coordinate", for: .normal)
         button.addTarget(self, action: #selector(threeDButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.configuration = .filled()
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Third Questions"
         // Do any additional setup after loading the view.
-        self.navigationController?.title = "Third Question"
         view.addSubview(twoDButton)
         twoDButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         twoDButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
