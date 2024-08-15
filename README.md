@@ -1,14 +1,14 @@
 # IdeasLab Interview Answers
 
-## 1. How do I investigate leaks and performance issue?
-To investigate leaks and performance issue XCode provide several tools we can use. I usually use Leaks on instrument, Memory Graph, and a simple deinit debugger on suspected objects.
+## 1. How do I investigate leaks and performance issues?
+To investigate leaks and performance issues XCode provides several tools we can use. I usually use Leaks on the instrument, Memory Graph, and a simple deinit debugger on suspected objects.
 
-On XCode instrument, there are several tools we can use to our apps performance. For memory leaks, we use Leaks tools. While the instruments monitor the app, we navigate throughout the app and see if the instrument detect leaks during that time. If it does, we can see what object causing the leaks.
-After that we can check the debug memory graph to make sure the leaks located on the parts we suspect there are. The leaks can be seen on the sidebar.
-Since leaks usually caused by strong reference causing an object not deinitialized properly. Sometimes the simplest method is the best method. I put a print function on deinit to see if the suspected object is really deinitialized or not.
+On XCode instrument, there are several tools we can use to our apps performance. For memory leaks, we use Leaks tools. While the instruments monitor the app, we navigate throughout the app and see if the instrument detects leaks during that time. If it does, we can see what object is causing the leaks.
+After that, we can check the debug memory graph to make sure the leaks are located on the parts we suspect there are. The leaks can be seen on the sidebar.
+Since leaks are usually caused by strong reference causing an object not deinitialized properly. Sometimes the simplest method is the best method. I put a print function on deinit to see if the suspected object is really deinitialized or not.
 
 ### Memory Leaks Example
-In this example we try to simulate memory leak. We have two objects with strong reference on one another.
+In this example, we try to simulate memory leaks. We have two objects with strong references on one another.
 
 ```swift
 class MainClass {
@@ -38,7 +38,7 @@ class SubClass {
 }
 ```
 
-For the main viewcontroller, its a simple VC with a button to navigate to second view controller.
+For the main viewcontroller, it's a simple VC with a button to navigate to the second view controller.
 ```swift
 class ViewController: UIViewController {
     
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     
 }
 ```
-On second view controller, we have `MainClass` object as `main` parameter. Here is code for SecondViewController.
+On the second view controller, we have `MainClass` object as `main` parameter. Here is the code for SecondViewController.
 
 ```swift
 class SecondViewController: UIViewController {
@@ -85,11 +85,14 @@ class SecondViewController: UIViewController {
 }
 ```
 
-Now lets check on Leaks Instrument. If we navigate to second view controller and dismiss it back to first view controller, we can see the leaks intrument detects a memory leak. If we select the memory leak icon, it will give us the object that causing the leak.
+Now lets check on Leaks Instrument. If we navigate to the second view controller and dismiss it back to the first view controller, we can see the leaks intrument detects a memory leak. If we select the memory leak icon, it will give us the object that causing the leak.
+
+![Screenshot 2024-08-15 at 23 29 39](https://github.com/user-attachments/assets/cf768d0e-eb1b-4570-b966-deb8b4983d20)
+
 
 As you can see, There's a leak on MainClass and SubClass class. From the timestamp and action we did, we know that leak happens when we dismiss second view controller.
 
-When we check the codebase, we saw the strong reference on MainClass parameter causing the class cannot be fully destroyed when the view is dismissed. We can fix it by changing it to weak var. We put a deinitializer to trigger a print action when the class is destroyed.
+When we checked the codebase, we saw the strong reference on `MainClass` parameter causing the class cannot be fully destroyed when the view is dismissed. We can fix it by changing it to weak var. We put a deinitializer to trigger a print action when the class is destroyed.
 
 ```swift
 class SubClass {
@@ -106,10 +109,10 @@ class SubClass {
 }
 ```
 
-So you can see after whe change it to weak var, the all the class used on second view controller is destroyed when the second view controller is dismissed, solving our memory leak issue
+So you can see after we change it to weak var, the class used on the second view controller is destroyed when the second view controller is dismissed, solving our memory leak issue
 ## 2
 ### 2A. How can we manage tasks in a multithreaded environment? Give us an example on how to use the Grand Central Dispatch properly to divide tasks in different threads.
-Multithreading is so important to manage load and tasks. If we do all tasks on main thread, it will bogged down the main thread and make the user experience bad. We can manage tasks using Grand Central Dispatch. We use `DispatchQueue` code block to send tasks to either main thread or background thread, and we can give labels and priority to the task. For example: 
+Multithreading is so important to manage load and tasks. If we do all tasks on the main thread, it will bog down the main thread and make the user experience bad. We can manage tasks using Grand Central Dispatch. We use `DispatchQueue` code block to send tasks to either the main thread or the background thread, and we can give labels and priority to the task. For example: 
 
 ```swift
 DispatchQueue.main.async {
@@ -118,7 +121,7 @@ DispatchQueue.main.async {
 ```
 With `DispatchQueue.main` , we make sure the app do  `updateValueOnUI()` tasks on main thread. The best practices is to only use main thread for UI.
 
-For heavy tasks, we delegate tasks to background with `DispatchQueue.global()` code written inside the code block will go to background thread.
+For heavy tasks, we delegate tasks to the background with `DispatchQueue.global()` code written inside the code block will go to background thread.
 ```swift
 DispatchQueue.global().async {
     heavyTask()
