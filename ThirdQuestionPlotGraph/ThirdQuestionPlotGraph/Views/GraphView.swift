@@ -9,20 +9,23 @@ import UIKit
 
 class GraphView: UIView {
     
+    let viewModel = KeypointsHelper()
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         backgroundColor = .white
-        
-        let data = KeypointsHelper.readLocalFile(forName: "TW_Keypoints")
+        let data = viewModel.readLocalFile(forName: "TW_Keypoints")
         
         plot2DGraph(datapoint: data, to: layer)
         
     }
     
-    func plot2DGraph(datapoint: [Keypoints], to layer: CALayer) {
+    func plot2DGraph(datapoint: [Keypoints], to layer: CALayer, inset: CGFloat = 10) {
         
-        let data = datapoint.map({$0.get2DCoordinate(bounds)})
+        let scaleObj = viewModel.calculateCenterAndScale(datapoint: datapoint, inset: inset, bounds: bounds)
+
+        let data = datapoint.map({$0.get2DCoordinate(center: scaleObj.center, scale: scaleObj.scale)})
+        
         
         for i in 1..<data.count {
             let point = data[i]

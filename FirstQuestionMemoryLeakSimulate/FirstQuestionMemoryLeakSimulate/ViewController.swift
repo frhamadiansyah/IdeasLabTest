@@ -63,7 +63,7 @@ class MainClass {
 }
 
 class SubClass {
-    var main: MainClass?
+    weak var main: MainClass?
     
     init (main: MainClass) {
         self.main = main

@@ -11,11 +11,19 @@ import SceneKit
 struct Keypoints: Decodable {
     var id: Int
     var keypoints: [Float]
-    func get2DCoordinate(_ bounds: CGRect) -> CGPoint {
-        let centerX = bounds.width / 2
-        let centerY = bounds.height / 2
+    func get2DCoordinate(center: CGPoint, scale: CGFloat) -> CGPoint {
+        let x = (CGFloat(keypoints[0]) * scale) + center.x
+        let y = (CGFloat(keypoints[1]) * scale) + center.y
+        return CGPoint(x: x, y: y)
+    }
+    
+    func get2DCoordinate(midX: CGFloat, midY: CGFloat, canvasWidth: CGFloat, canvasHeight: CGFloat, graphWidth: CGFloat, graphHeight: CGFloat) -> CGPoint {
+        let centerX = midX
+        let centerY = midY
         
-        let min = min(bounds.height, bounds.width)
+        let widthScale = canvasWidth / graphWidth
+        let heightScale = canvasHeight / graphHeight
+        let min = min(widthScale, heightScale)
         let scale = min
         
         let x = (CGFloat(keypoints[0]) * scale) + centerX

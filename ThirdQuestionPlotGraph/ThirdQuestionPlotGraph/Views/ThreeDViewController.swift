@@ -18,28 +18,32 @@ class ThreeDViewController: UIViewController {
         self.view.addSubview(sceneView)
         let scene = SCNScene()
         sceneView.scene = scene
+        scene.background.contents = UIColor.black
         
         // Setup the camera distance from origin on z axis
-        let cameraDistance: Float = 5
+        let cameraDistance: Float = -3
 
         setupSceneEnvironment(cameraDistance: cameraDistance, to: scene)
         
         // Allow user to manipulate the camera
         sceneView.allowsCameraControl = true
         // Add data points
-        let data = KeypointsHelper.readLocalFile(forName: "CA_Keypoints")
+        let data = KeypointsHelper().readLocalFile(forName: "CA_Keypoints")
         let dataPoints = data.map {$0.get3DCoordinate()}
 
         addCylinderThroughDataPoints(dataPoints, to: scene)
 
     }
     
-    func setupSceneEnvironment(cameraDistance: Float = 3, to scene: SCNScene) {
+    func setupSceneEnvironment(cameraDistance: Float = 5, to scene: SCNScene) {
         
         // Setup the camera
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
+
+        // rotate the camera so the graph look similar with the example's orientation
         cameraNode.position = SCNVector3(x: 0, y: 0, z: cameraDistance)
+        cameraNode.rotation = SCNVector4(x: 1, y: 0, z: 0, w: .pi)
         scene.rootNode.addChildNode(cameraNode)
         
         // Add floor to the scene
@@ -48,7 +52,7 @@ class ThreeDViewController: UIViewController {
         floor.reflectionFalloffEnd = 10.0
         
         let floorNode = SCNNode(geometry: floor)
-        floorNode.position = SCNVector3(0, -5, 0)
+        floorNode.position = SCNVector3(0, 5, 0)
         floorNode.geometry?.firstMaterial?.diffuse.contents = UIColor.gray
         scene.rootNode.addChildNode(floorNode)
         
@@ -56,7 +60,7 @@ class ThreeDViewController: UIViewController {
         let lightNode = SCNNode()
         lightNode.light = SCNLight()
         lightNode.light?.type = .omni
-        lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
+        lightNode.position = SCNVector3(x: 0, y: 10, z: -10)
         scene.rootNode.addChildNode(lightNode)
         
         // Add ambient light to the scene
